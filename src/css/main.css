@@ -1,0 +1,325 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;500;600;700&display=swap');
+
+/* ── Variables de color ── */
+:root {
+  --rosa:        #C8647A;
+  --rosa-claro:  #F2B5C2;
+  --rosa-oscuro: #8E3A50;
+  --crema:       #FDF6F0;
+  --verde:       #2D6A4F;
+  --verde-oscuro:#1B4332;
+  --texto:       #2D2D2D;
+}
+
+/* ── Tipografía base ── */
+* { box-sizing: border-box; }
+body { font-family: 'Nunito', sans-serif; color: var(--texto); }
+h1, h2, h3, h4, h5, .font-titulo { font-family: 'Pacifico', cursive; }
+
+/* ── Navbar ── */
+.navbar-custom {
+  background-color: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(1px);
+  border-bottom: 1px solid var(--rosa-claro);
+  padding: 0.75rem 0;
+}
+.navbar-brand {
+  font-family: 'Pacifico', cursive !important;
+  color: var(--rosa-oscuro) !important;
+  font-size: 1.4rem;
+}
+.nav-link {
+  color: var(--texto) !important;
+  font-weight: 600;
+  transition: color 0.2s;
+  padding: 0.5rem 1rem !important;
+}
+.nav-link:hover,
+.nav-link.activo { color: var(--rosa) !important; }
+
+/* ── Secciones ── */
+.seccion-padding { padding-top: 76px; }
+
+/* ── Hero ── */
+.hero {
+  min-height: 100vh;
+  background-color: var(--crema);
+  display: flex;
+  align-items: center;
+  padding-top: 76px;
+}
+.hero-imagen-placeholder {
+  width: 100%;
+  height: 420px;
+  background: linear-gradient(135deg, var(--rosa-claro) 0%, var(--crema) 100%);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--rosa-oscuro);
+  font-size: 0.95rem;
+  text-align: center;
+  padding: 1rem;
+  border: 2px dashed var(--rosa-claro);
+}
+
+/* ── Tarjeta de servicio (carrusel) ── */
+.servicio-card {
+  position: relative;
+  height: 88vh;
+  min-height: 520px;
+  overflow: hidden;
+}
+.servicio-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1.2s ease;
+}
+.overlay-rosa  { position: absolute; inset: 0; background: rgba(142, 58, 80,  0.30); }
+.overlay-verde { position: absolute; inset: 0; background: rgba(27,  67, 50,  0.30); }
+.servicio-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+.servicio-titulo {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(2.2rem, 7vw, 4.5rem);
+  text-shadow: 2px 3px 10px rgba(0,0,0,0.35);
+  line-height: 1.2;
+}
+.servicio-desc {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  max-width: 580px;
+  margin: 1rem auto 0;
+  opacity: 0.92;
+  line-height: 1.6;
+}
+
+/* Flechas de navegación */
+.flecha {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.7);
+  color: white;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  line-height: 1;
+}
+.flecha:hover { background: rgba(255,255,255,0.3); }
+.flecha-izq { left: 1.5rem; }
+.flecha-der { right: 1.5rem; }
+
+/* Puntos indicadores de imagen */
+.dots-img {
+  position: absolute;
+  bottom: 7rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 8px;
+}
+.dot {
+  width: 14px;
+  height: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0;
+  font-size: 14px;
+  opacity: 0.6;
+  color: white;
+  line-height: 1;
+}
+.dot.activo { opacity: 1; }
+
+/* Botones de servicio abajo */
+.servicio-tabs {
+  position: absolute;
+  bottom: 1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.servicio-tab {
+  background: rgba(255,255,255,0.2);
+  border: 1.5px solid rgba(255,255,255,0.6);
+  border-radius: 20px;
+  padding: 4px 16px;
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.2s;
+}
+.servicio-tab.activo {
+  background: white;
+  color: var(--rosa-oscuro);
+  border-color: white;
+}
+
+/* ── Sección Inicio – cards info ── */
+.info-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  height: 100%;
+  border-left: 4px solid var(--rosa);
+}
+.info-card h3 { font-size: 1.2rem; color: var(--rosa-oscuro); margin-bottom: 0.75rem; }
+
+/* ── Cotizar ── */
+.opcion-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+  height: 100%;
+}
+.opcion-card:hover { border-color: var(--rosa-claro); }
+.opcion-card.sel    { border-color: var(--rosa); background: #fff0f3; }
+.opcion-card .icono { font-size: 2.8rem; margin-bottom: 1rem; }
+.opcion-card h5     { color: var(--rosa-oscuro); margin-bottom: 0.5rem; }
+
+.selector-btn {
+  cursor: pointer;
+  padding: 5px 16px;
+  border-radius: 20px;
+  border: 1.5px solid var(--rosa-claro);
+  color: var(--texto);
+  background: white;
+  margin: 3px;
+  transition: all 0.15s;
+  font-weight: 600;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.9rem;
+}
+.selector-btn.sel {
+  background: var(--rosa);
+  border-color: var(--rosa);
+  color: white;
+}
+.desglose {
+  background: var(--crema);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+}
+.desglose-fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+  font-size: 0.95rem;
+}
+.desglose-fila + .desglose-fila { border-top: 1px solid #f0e0e5; }
+.precio-total {
+  font-family: 'Pacifico', cursive;
+  color: var(--rosa-oscuro);
+  font-size: 1.8rem;
+}
+.item-cotizacion {
+  background: #fdf0f3;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.btn-eliminar {
+  background: none;
+  border: none;
+  color: var(--rosa);
+  cursor: pointer;
+  font-size: 1.1rem;
+  padding: 0;
+  line-height: 1;
+}
+.resumen-total {
+  background: var(--rosa-oscuro);
+  color: white;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+/* ── Botones globales ── */
+.btn-rosa {
+  background: var(--rosa);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 28px;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+.btn-rosa:hover { background: var(--rosa-oscuro); transform: translateY(-1px); }
+.btn-outline-rosa {
+  border: 2px solid var(--rosa);
+  color: var(--rosa);
+  border-radius: 25px;
+  padding: 10px 28px;
+  font-weight: 700;
+  background: transparent;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+.btn-outline-rosa:hover { background: var(--rosa); color: white; }
+
+/* ── Footer ── */
+footer {
+  background: var(--rosa-oscuro);
+  color: rgba(255,255,255,0.85);
+}
+footer a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.15s; }
+footer a:hover { color: white; }
+footer h5, footer h6 { font-family: 'Pacifico', cursive; }
+footer h6 { font-size: 1rem; color: var(--rosa-claro); }
+
+/* ── Responsive extras ── */
+@media (max-width: 768px) {
+  .flecha { width: 42px; height: 42px; font-size: 1.3rem; }
+  .flecha-izq { left: 0.75rem; }
+  .flecha-der { right: 0.75rem; }
+  .hero { padding-top: 80px; }
+}
